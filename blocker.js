@@ -3,9 +3,9 @@ let use_ext = true;
 
 let current_url = window.location.href;
 
-if (use_ext) remove();
+if (use_ext) removeImageAds();
 
-function remove() {
+function removeImageAds() {
   // YOUTUBE
   let ads = document.querySelectorAll("div#masthead-ad, ytd-ad-slot-renderer");
   let style = document.createElement("style");
@@ -28,19 +28,37 @@ function remove() {
   other_ads.forEach((e) => {
     let divs = e.querySelectorAll("div");
 
+    // Need to check if the child are indeed ads or not
     if (divs.length == 2) {
       e.style.display = "none";
-      //   console.log(divs);
-      //   log(divs);
-      //   divs.childNodes?.forEach((child) => {
-      //     console.log(child);
-      //   });
     }
   });
+}
 
-  // ads?.forEach((e) => {
-  //     if(e.)
-  // });
+// Only For Youtube, For now!!
+function removeVideoAds() {
+  let video = document.querySelector("video");
+  let ad_showing = [...document.querySelectorAll(".ad-showing")];
+
+  // Youtube Skip Ad Button ytp-skip-ad-button
+
+  if (ad_showing) {
+    debug("IKLAN DITEMUKAN");
+    let ad_skip_button = document.querySelector(".ytp-skip-ad-button");
+    ad_skip_button?.click();
+  }
+
+  if (video) {
+    debug("IKLAN VIDEO DITEMUKAN");
+
+    let skips = [".ytp-skip-ad-button"];
+
+    skips.forEach((e) => {
+      let skip_element = document.querySelector(e);
+
+      skip_element?.click();
+    });
+  }
 }
 
 function debug(message) {
