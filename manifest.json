@@ -1,12 +1,12 @@
 {
-  "name": "Simple Ext",
+  "name": "Chrome AdBlock",
   "version": "1.0.0",
-  "description": "Simple Ext",
+  "description": "Chrome AdBlock",
   "manifest_version": 3,
   "author": "Alep",
   "action": {
     "default_popup": "index.html",
-    "default_title": "Latest Covid Report",
+    "default_title": "Simple Chrome AdBlock",
     "default_icon": "icon.png"
   },
   "background": {
