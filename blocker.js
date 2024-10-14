@@ -3,7 +3,12 @@ let use_ext = true;
 
 let current_url = window.location.href;
 
-if (use_ext) removeImageAds();
+// Dipisah kan saja, utk logic youtube dan site lain
+
+if (use_ext) {
+  removeImageAds();
+  removeVideoAds();
+}
 
 function removeImageAds() {
   // YOUTUBE
@@ -38,7 +43,7 @@ function removeImageAds() {
 // Only For Youtube, For now!!
 function removeVideoAds() {
   let video = document.querySelector("video");
-  let ad_showing = [...document.querySelectorAll(".ad-showing")];
+  let ad_showing = [...document.querySelectorAll(".ad-showing")][0];
 
   // Youtube Skip Ad Button ytp-skip-ad-button
 
@@ -58,6 +63,9 @@ function removeVideoAds() {
 
       skip_element?.click();
     });
+    video.play();
+
+    video.currentTime = video.duration - 2;
   }
 }
 
