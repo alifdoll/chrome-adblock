@@ -43,28 +43,8 @@ function remove() {
   // });
 }
 
-function log(log, level = "l", ...args) {
-  const prefix = "Remove Adblock Thing:";
-  const message = `${prefix} ${log}`;
-  switch (level) {
-    case "e":
-    case "err":
-    case "error":
-      console.error(message, ...args);
-      break;
-    case "l":
-    case "log":
-      console.log(message, ...args);
-      break;
-    case "w":
-    case "warn":
-    case "warning":
-      console.warn(message, ...args);
-      break;
-    case "i":
-    case "info":
-    default:
-      console.info(message, ...args);
-      break;
-  }
+function debug(message) {
+  const prefix = "DEBUG: ";
+  const log_message = `${prefix} ${message}`;
+  console.log(log_message);
 }
