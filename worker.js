@@ -1,4 +1,5 @@
 let is_checked = false;
+console.log("THIS IS WORKER");
 
 chrome.action.onClicked.addListener((tab) => {
   is_checked = !is_checked;

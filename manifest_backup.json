@@ -1,22 +1,31 @@
 {
-  "name": "Chrome AdBlock",
-  "version": "1.0.0",
-  "description": "Chrome AdBlock",
   "manifest_version": 3,
-  "author": "Alep",
+  "name": "Chrome AdBlock",
+  "description": "Chrome AdBlock",
+  "author": "Alifdoll",
+  "version": "1.0.0",
+  "icons": {
+    "16": "block.png",
+    "32": "block.png",
+    "48": "block.png",
+    "128": "block.png"
+  },
   "action": {
-    "default_popup": "index.html",
     "default_title": "Simple Chrome AdBlock",
     "default_icon": "icon.png"
   },
   "background": {
-    "service_worker": "index.js",
-    "type": "module"
+    "service_worker": "worker.js"
   },
   "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["youtube.js"]
+    },
     {
       "matches": ["*://*/*"],
       "js": ["blocker.js"]
     }
-  ]
+  ],
+  "permissions": ["scripting", "activeTab"]
 }
