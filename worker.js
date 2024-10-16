@@ -4,10 +4,12 @@ chrome.action.onClicked.addListener((tab) => {
   is_checked = !is_checked;
   let icon = is_checked ? "check48.png" : "delete48.png";
 
-  // console.log(icon);
-  // console.log(chrome);
-  // console.log(chrome.action);
-  // chrome.action.setIcon({ path: "check.png" });
+  if (is_checked) {
+    chrome.action.setBadgeText({ text: "25" });
+  } else {
+    chrome.action.setBadgeText({ text: "" });
+  }
+
   chrome.action.setIcon({
     path: {
       16: icon,
@@ -16,12 +18,4 @@ chrome.action.onClicked.addListener((tab) => {
       128: icon,
     },
   });
-
-  // const canvas = new OffscreenCanvas(16, 16);
-  // const context = canvas.getContext("2d");
-  // context.clearRect(0, 0, 16, 16);
-  // context.fillStyle = "#00FF00"; // Green
-  // context.fillRect(0, 0, 16, 16);
-  // const imageData = context.getImageData(0, 0, 16, 16);
-  // chrome.action.setIcon({ path: imageData });
 });
